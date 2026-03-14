@@ -1,9 +1,8 @@
-const express = require('express');
-const app = express();
+const app = require('./app');
+const port = process.env.PORT || 3000;
 
-app.get('/sum', (req, res) => {
-    const { a, b } = req.query;
-    res.json({ result: Number(a) + Number(b) });
+const server = app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
 
-module.exports = app;
+module.exports = server; // ✅ Export server for integration tests
